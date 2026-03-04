@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int findMax(int arr[], int n) {
+    int max = arr[0];   
+
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+
+    return max;
+}
+
+int main() {
+    int arr1[] = {1, 2, 3, 4, 5};
+    int arr2[] = {7, 7, 7, 7, 7};
+    int arr3[] = {-10, 2, 3, -4, 5};
+
+    int n1 = sizeof(arr1) / sizeof(arr1[0]);
+    int n2 = sizeof(arr2) / sizeof(arr2[0]);
+    int n3 = sizeof(arr3) / sizeof(arr3[0]);
+
+    printf("Output 1: %d\n", findMax(arr1, n1));
+    printf("Output 2: %d\n", findMax(arr2, n2));
+    printf("Output 3: %d\n", findMax(arr3, n3));
+
+    return 0;
+}
+Output 1: 5
+Output 2: 7
+Output 3: 5
