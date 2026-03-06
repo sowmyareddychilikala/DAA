@@ -1,0 +1,23 @@
+#include<stdio.h>
+int main(){
+int a[]={3,9,14,19,25,31,42,47,53};
+int n=9,key=31;
+int l=0,r=n-1,mid;
+while(l<=r){
+mid=(l+r)/2;
+printf("l=%d r=%d mid=%d value=%d\n",l,r,mid,a[mid]);
+if(a[mid]==key){
+printf("Position=%d",mid+1);
+break;
+}
+else if(key<a[mid])r=mid-1;
+else l=mid+1;
+}
+return 0;
+}
+
+OUTPUT:
+l=0 r=8 mid=4 value=25
+l=5 r=8 mid=6 value=42
+l=5 r=5 mid=5 value=31
+Position=6
