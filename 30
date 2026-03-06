@@ -1,0 +1,34 @@
+#include<stdio.h>
+long long power10(int n){
+long long p=1;
+for(int i=0;i<n;i++)p*=10;
+return p;
+}
+int digits(long long x){
+int c=0;
+while(x){c++;x/=10;}
+return c;
+}
+long long karatsuba(long long x,long long y){
+if(x<10||y<10)return x*y;
+int n=digits(x)>digits(y)?digits(x):digits(y);
+int m=n/2;
+long long p=power10(m);
+long long a=x/p;
+long long b=x%p;
+long long c=y/p;
+long long d=y%p;
+long long ac=karatsuba(a,c);
+long long bd=karatsuba(b,d);
+long long adbc=karatsuba(a+b,c+d)-ac-bd;
+return ac*power10(2*m)+adbc*p+bd;
+}
+int main(){
+long long x=1234,y=5678;
+long long z=karatsuba(x,y);
+printf("z=%lld",z);
+return 0;
+}
+
+OUTPUT:
+z=7016652
