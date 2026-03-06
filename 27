@@ -1,0 +1,31 @@
+#include<stdio.h>
+#include<stdlib.h>
+int main(){
+int a[]={45,34,4,12,5,2};
+int n=6,target=42;
+int n1=n/2,n2=n-n1;
+int s1[1<<3],s2[1<<3];
+int c1=0,c2=0;
+for(int i=0;i<(1<<n1);i++){
+int sum=0;
+for(int j=0;j<n1;j++)if(i&(1<<j))sum+=a[j];
+s1[c1++]=sum;
+}
+for(int i=0;i<(1<<n2);i++){
+int sum=0;
+for(int j=0;j<n2;j++)if(i&(1<<j))sum+=a[n1+j];
+s2[c2++]=sum;
+}
+int best=0,diff=1000000;
+for(int i=0;i<c1;i++)
+for(int j=0;j<c2;j++){
+int s=s1[i]+s2[j];
+int d=abs(target-s);
+if(d<diff){diff=d;best=s;}
+}
+printf("%d",best);
+return 0;
+}
+
+OUTPUT:
+41
